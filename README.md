@@ -1,2 +1,2 @@
 # yorkuhacks2018
-yorkuhacks2018
+Yorku Hacks 2018
