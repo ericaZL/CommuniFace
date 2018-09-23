@@ -1,4 +1,4 @@
-package interactionsatisfaction.communiface;
+package interactionsatifaction.communiface;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -80,18 +80,22 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
-
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
+        if (id == R.id.nav_happy) {
+            Lessons lesson = new Lessons("Happy");
+        } else if (id == R.id.nav_sad) {
+            Lessons lesson = new Lessons("Sad");
+        } else if (id == R.id.nav_angry) {
+            Lessons lesson = new Lessons("Angry");
+        } else if (id == R.id.nav_surprise) {
+            Lessons lesson = new Lessons("Surprise");
+        } else if (id == R.id.nav_fear) {
+            Lessons lesson = new Lessons("Fear");
+        } else if (id == R.id.nav_disgust) {
+            Lessons lesson = new Lessons("Disgust");
+        } else if (id == R.id.nav_neutral) {
+            Lessons lesson = new Lessons("Neutral");
+        } else if (id == R.id.nav_all) {
+            Lessons lesson = new Lessons("All");
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
