@@ -26,7 +26,8 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_menu_send" />
+        app:srcCompat="@drawable/ic_menu_send"
+        android:onClick="OnClickSlide"/>
 
     <TextView
         android:id="@+id/main_title"
@@ -116,7 +117,8 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/slide_image"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_menu_send" />
+        app:srcCompat="@drawable/ic_menu_send"
+        android:onClick="OnClickSlide"/>
 
     <Button
         android:id="@+id/slide_continue"
@@ -131,6 +133,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/main_divider2" />
+        app:layout_constraintTop_toBottomOf="@+id/main_divider2"
+        android:onClick="OnClickSlide"/>
 
 </android.support.constraint.ConstraintLayout>

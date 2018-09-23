@@ -3,6 +3,7 @@ package interactionsatisfaction.communiface;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -92,30 +93,35 @@ public class MainActivity extends AppCompatActivity
             ContentSlideOpen();
             emotions = "Happy";
             slideimage = 0;
+            ((ImageView) findViewById(R.id.slide_image)).setImageResource(SlideImages("N"));
         } else if (id == R.id.nav_sad) {
             Lessons lesson = new Lessons("Sad");
             ContentClose();
             ContentSlideOpen();
             emotions = "Sad";
             slideimage = 0;
+            ((ImageView) findViewById(R.id.slide_image)).setImageResource(SlideImages("N"));
         } else if (id == R.id.nav_angry) {
             Lessons lesson = new Lessons("Angry");
             ContentClose();
             ContentSlideOpen();
             emotions = "Angry";
             slideimage = 0;
+            ((ImageView) findViewById(R.id.slide_image)).setImageResource(SlideImages("N"));
         } else if (id == R.id.nav_surprise) {
             Lessons lesson = new Lessons("Surprise");
             ContentClose();
             ContentSlideOpen();
             emotions = "Surprise";
             slideimage = 0;
+            ((ImageView) findViewById(R.id.slide_image)).setImageResource(SlideImages("N"));
         } else if (id == R.id.nav_fear) {
             Lessons lesson = new Lessons("Fear");
             ContentClose();
             ContentSlideOpen();
             emotions = "Fear";
             slideimage = 0;
+            ((ImageView) findViewById(R.id.slide_image)).setImageResource(SlideImages("N"));
         } else if (id == R.id.nav_disgust) {
             Lessons lesson = new Lessons("Disgust");
             ContentClose();
@@ -134,9 +140,18 @@ public class MainActivity extends AppCompatActivity
             ContentClose();
             emotions = "All";
             //*************Skip Slide Stuff*************************
-        } else if (id == R.id.slide_btnl) {
+        }
+
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer.closeDrawer(GravityCompat.START);
+        return true;
+    }
+
+    public void OnClickSlide(View view){
+        int id = view.getId();
+        if (id == R.id.slide_btnl) {
             if(SlideImages("L") != -1) {
-                ((ImageView) findViewById(R.id.slide_image)).setImageResource(SlideImages("L"));
+            ((ImageView) findViewById(R.id.slide_image)).setImageResource(SlideImages("L"));
             }
         } else if (id == R.id.slide_btnr) {
             if(SlideImages("R") != -1) {
@@ -146,10 +161,6 @@ public class MainActivity extends AppCompatActivity
             ContentClose();
             //get question type
         }
-
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
-        return true;
     }
 
     private int SlideImages(String direction){
@@ -167,8 +178,9 @@ public class MainActivity extends AppCompatActivity
                 return -1;
             }
         }
-        String mDrawableName = emotions + "/" + emotions + "00" + slideimage + ".jpg";
-        return (getResources().getIdentifier(mDrawableName , "drawable", getPackageName()));
+        String mDrawableName = emotions + "00" + slideimage;
+        System.out.println("ShitFuck" + getApplicationContext().getResources().getIdentifier(mDrawableName.toLowerCase() , "drawable", getApplicationContext().getPackageName()) + " " + mDrawableName);
+        return (getResources().getIdentifier(mDrawableName.toLowerCase() , "drawable", getPackageName()));
     }
 
     private void ContentClose(){

@@ -1,5 +1,5 @@
 package interactionsatisfaction.communiface;
-import java.net.URI;
+/*import java.net.URI;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -10,12 +10,12 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.util.EntityUtils;
 import org.json.JSONArray;
 import org.json.JSONObject;
-//import android.util.Log;
+//import android.util.Log;*/
 
 public class EmotionAnalysis {
 
 
-            // Replace <Subscription Key> with your valid subscription key.
+           /* // Replace <Subscription Key> with your valid subscription key.
             private static final String subscriptionKey = "89b3f8da6f01447aa4179e88ac363af1";
 
             // NOTE: You must use the same region in your REST call as you used to
@@ -103,6 +103,6 @@ public class EmotionAnalysis {
                 }
             }
 
-
+*/
 
 }
