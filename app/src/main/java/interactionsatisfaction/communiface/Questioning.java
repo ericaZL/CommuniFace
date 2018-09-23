@@ -13,7 +13,7 @@ public class Questioning {
     public static int answer = -1;
 
     public Questioning(String type){
-        emoType = type;
+        this.emoType = type;
     }
 
     public static String randEmo() {
@@ -47,7 +47,7 @@ public class Questioning {
     }
 
     // get random Img from folder
-    public static String randImg(String folderName) {
+    public String randImg(String folderName) {
         String path = folderName + "/" + folderName + "00" + Integer.toString(rnd.nextInt(FOLDER_CAP)) + ".jpg";
         return path;
     }
@@ -66,7 +66,7 @@ public class Questioning {
 
     //Odd-one-out
     // Text prompt, 4 image buttons
-    public static void oddOneOut(){
+    public void oddOneOut(){
         String imgEmo = randEmo();
         oddOneOut(imgEmo);
     }
@@ -88,7 +88,7 @@ public class Questioning {
 
     //T/F
     // Text prompt, one image, 2 standard buttons
-    public static void trueOrFalse(){
+    public void trueOrFalse(){
         String questionEmo = randEmo();
         trueOrFalse(questionEmo);
     }
@@ -109,7 +109,7 @@ public class Questioning {
 
     //MC
     // Text prompt, one image, 4 buttons
-    public static void multipleChoice(){
+    public void multipleChoice(){
         String imgEmo = randEmo();
         multipleChoice(imgEmo);
     }
@@ -143,7 +143,7 @@ public class Questioning {
 
     //Img Mix
     // Text prompt, 4 image buttons
-    public static void imgMix() {
+    public void imgMix() {
         String imgEmo = randEmo();
         imgMix(imgEmo);
     }
