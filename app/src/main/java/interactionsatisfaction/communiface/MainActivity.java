@@ -91,7 +91,7 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.nav_menu) {
             ContentClose();
             ContentMainOpen();
-        } else if (id == R.id.nav_menu) {
+        } else if (id == R.id.nav_pic) {
             ContentClose();
             ContentPicOpen();
         } else if (id == R.id.nav_happy) {
@@ -244,6 +244,15 @@ public class MainActivity extends AppCompatActivity
 
         if (id == R.id.pic_continue) {
             //take pic
+        }
+    }
+
+    public void ReturnPic (boolean correct){
+        if(correct == true){
+            ((TextView)findViewById(R.id.pic_emotion)).setText("Correct");
+        }
+        else{
+            ((TextView)findViewById(R.id.pic_emotion)).setText("Good Try!");
         }
     }
 
