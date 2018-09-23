@@ -17,10 +17,17 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import java.util.*;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.content.Intent;
+import android.provider.MediaStore;
+import android.view.View;
+import java.io.*;
 
 import interactionsatisfaction.communiface.R;
 
 import interactionsatisfaction.communiface.R;
+
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -30,6 +37,7 @@ public class MainActivity extends AppCompatActivity
     private Questioning q = new Questioning();
     private String emotionquestion;
     private Random rnd = new Random();
+    static final int REQUEST_IMAGE_CAPTURE = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -243,7 +251,22 @@ public class MainActivity extends AppCompatActivity
         int id = view.getId();
 
         if (id == R.id.pic_continue) {
-            //take pic
+            int REQUEST_PERMISSION= 100;
+            int cameraPermission = this.checkSelfPermission(android.Manifest.permission.CAMERA);
+            if (android.os.Build.VERSION.SDK_INT >= 23) {
+                if (cameraPermission != android.content.pm.PackageManager.PERMISSION_GRANTED  ) {
+
+                    this.requestPermissions(
+                            new String[]{android.Manifest.permission.CAMERA },
+                            REQUEST_PERMISSION
+                    );
+                }
+            }
+            Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+            if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
+                startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
+            }
+            //startActivity(takePictureIntent);
         }
     }
 
