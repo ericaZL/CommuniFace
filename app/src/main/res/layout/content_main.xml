@@ -8,27 +8,6 @@
     tools:context=".MainActivity"
     tools:showIn="@layout/app_bar_main">
 
-    <ImageButton
-        android:id="@+id/slide_btnl"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:alpha="0.4"
-        android:background="?attr/selectableItemBackgroundBorderless"
-        android:scaleType="fitXY"
-        android:scaleX="-1"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="@+id/slide_image"
-        app:layout_constraintEnd_toStartOf="@+id/slide_btnr"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_menu_send"
-        android:onClick="OnClickSlide"/>
-
     <TextView
         android:id="@+id/main_title"
         android:layout_width="205dp"
@@ -99,6 +78,27 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/slide_btnl"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:alpha="0.4"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:onClick="OnClickSlide"
+        android:scaleType="fitXY"
+        android:scaleX="-1"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/slide_image"
+        app:layout_constraintEnd_toStartOf="@+id/slide_btnr"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_menu_send" />
 
     <ImageButton
         android:id="@+id/slide_btnr"

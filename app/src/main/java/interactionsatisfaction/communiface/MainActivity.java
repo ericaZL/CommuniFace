@@ -135,6 +135,7 @@ public class MainActivity extends AppCompatActivity
             ContentSlideOpen();
             emotions = "Neutral";
             slideimage = 0;
+            ((ImageView) findViewById(R.id.slide_image)).setImageResource(SlideImages("N"));
         } else if (id == R.id.nav_all) {
             //Lessons lesson = new Lessons("All");
             ContentClose();
@@ -150,11 +151,11 @@ public class MainActivity extends AppCompatActivity
     public void OnClickSlide(View view){
         int id = view.getId();
         if (id == R.id.slide_btnl) {
-            if(SlideImages("L") != -1) {
-            ((ImageView) findViewById(R.id.slide_image)).setImageResource(SlideImages("L"));
+            if(slideimage != 0) {
+                ((ImageView) findViewById(R.id.slide_image)).setImageResource(SlideImages("L"));
             }
         } else if (id == R.id.slide_btnr) {
-            if(SlideImages("R") != -1) {
+            if(slideimage != 9) {
                 ((ImageView) findViewById(R.id.slide_image)).setImageResource(SlideImages("R"));
             }
         } else if (id == R.id.slide_continue) {
