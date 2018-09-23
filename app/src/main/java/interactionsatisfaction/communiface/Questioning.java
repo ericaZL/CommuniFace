@@ -4,6 +4,7 @@ import java.util.*;
 
 // methods: oddOneOut(), trueOrFalse(), multipleChoice(), imgMix()
 public class Questioning {
+    private String emoType;
     public static final int FOLDER_CAP = 10;
 
     static Random rnd = new Random();
@@ -11,7 +12,8 @@ public class Questioning {
 
     public static int answer = -1;
 
-    public Questioning(){
+    public Questioning(String type){
+        emoType = type;
     }
 
     public static String randEmo() {
