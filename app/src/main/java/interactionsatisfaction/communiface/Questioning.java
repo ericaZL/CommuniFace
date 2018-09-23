@@ -7,7 +7,7 @@ public class Questioning {
     private String emoType;
 
     // Items for frontend
-    private static int questionType = 0; // 0 = TF, 1 = Odd-one-out, 2 = ImgMix, 3 = MC
+    private static int questionType = -1; // 0 = TF, 1 = Odd-one-out, 2 = ImgMix, 3 = MC
     private static String emoWord = "";
     private static String imgPath = "";
     private static String wrongPath1 = "";
