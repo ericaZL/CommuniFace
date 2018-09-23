@@ -2,7 +2,7 @@ package interactionsatisfaction.communiface;
 import java.util.*;
 
 
-// methods: ooo(), tf(), mc(), imgMix()
+// methods: oddOneOut(), trueOrFalse(), multipleChoice(), imgMix()
 public class Questioning {
     public static final int FOLDER_CAP = 10;
 
@@ -10,8 +10,6 @@ public class Questioning {
     // Odd , T/F, MC, Img Mix
 
     public static int answer = -1;
-
-
 
     public Questioning(){
     }
@@ -66,11 +64,11 @@ public class Questioning {
 
     //Odd-one-out
     // Text prompt, 4 image buttons
-    public static void ooo(){
+    public static void oddOneOut(){
         String imgEmo = randEmo();
-        ooo(imgEmo);
+        oddOneOut(imgEmo);
     }
-    public static void ooo(String imgEmo){
+    public static void oddOneOut(String imgEmo){
         String wrong = randEmo();
 
         answer = rnd.nextInt(4);
@@ -88,12 +86,12 @@ public class Questioning {
 
     //T/F
     // Text prompt, one image, 2 standard buttons
-    public static void tf(){
+    public static void trueOrFalse(){
         String questionEmo = randEmo();
-        tf(questionEmo);
+        trueOrFalse(questionEmo);
     }
 
-    public static void tf(String questionEmo){
+    public static void trueOrFalse(String questionEmo){
         String imgEmo = randEmo();
 
         if(questionEmo.equals(imgEmo)){
@@ -109,11 +107,11 @@ public class Questioning {
 
     //MC
     // Text prompt, one image, 4 buttons
-    public static void mc(){
+    public static void multipleChoice(){
         String imgEmo = randEmo();
-        mc(imgEmo);
+        multipleChoice(imgEmo);
     }
-    public static void mc(String imgEmo){
+    public static void multipleChoice(String imgEmo){
         String wrong1, wrong2, wrong3;
 
         do{
