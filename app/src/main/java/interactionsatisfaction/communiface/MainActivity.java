@@ -180,7 +180,6 @@ public class MainActivity extends AppCompatActivity
             }
         }
         String mDrawableName = emotions + "00" + slideimage;
-        System.out.println("ShitFuck" + getApplicationContext().getResources().getIdentifier(mDrawableName.toLowerCase() , "drawable", getApplicationContext().getPackageName()) + " " + mDrawableName);
         return (getResources().getIdentifier(mDrawableName.toLowerCase() , "drawable", getPackageName()));
     }
 
