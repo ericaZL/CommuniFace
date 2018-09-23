@@ -5,6 +5,15 @@ import java.util.*;
 // methods: oddOneOut(), trueOrFalse(), multipleChoice(), imgMix()
 public class Questioning {
     private String emoType;
+
+    // Items for frontend
+    private static int questionType = 0; // 0 = TF, 1 = Odd-one-out, 2 = ImgMix, 3 = MC
+    private static String emoWord = "";
+    private static String imgPath = "";
+    private static String wrongPath1 = "";
+    private static String wrongPath2 = "";
+    private static String wrongPath3 = "";
+
     public static final int FOLDER_CAP = 10;
 
     static Random rnd = new Random();
@@ -16,31 +25,50 @@ public class Questioning {
         this.emoType = type;
     }
 
+    public static int getQuestionType(){
+        return questionType;
+    }
+    public static String getEmoWord(){
+        return emoWord;
+    }
+    public static String getImgPath(){
+        return imgPath;
+    }
+    public static String getWrongPath1(){
+        return wrongPath1;
+    }
+    public static String getWrongPath2(){
+        return wrongPath2;
+    }
+    public static String getWrongPath3(){
+        return wrongPath3;
+    }
+
     public static String randEmo() {
         // Randomly choosing folder
         int folderNum = rnd.nextInt(7);
         String folderName = "";
         switch (folderNum) {
             case 0:
-                folderName = "Happy";
+                folderName = "happy";
                 break;
             case 1:
-                folderName = "Sad";
+                folderName = "sad";
                 break;
             case 2:
-                folderName = "Angry";
+                folderName = "angry";
                 break;
             case 3:
-                folderName = "Surprise";
+                folderName = "surprise";
                 break;
             case 4:
-                folderName = "Fear";
+                folderName = "fear";
                 break;
             case 5:
-                folderName = "Disgust";
+                folderName = "disgust";
                 break;
             case 6:
-                folderName = "Neutral";
+                folderName = "neutral";
                 break;
         }
         return folderName;
@@ -48,13 +76,19 @@ public class Questioning {
 
     // get random Img from folder
     public String randImg(String folderName) {
-        String path = folderName + "/" + folderName + "00" + Integer.toString(rnd.nextInt(FOLDER_CAP)) + ".jpg";
+        String path = folderName + "00" + Integer.toString(rnd.nextInt(FOLDER_CAP)) + ".jpg";
         return path;
     }
 
 
     //Response from front-end
     public static boolean response(int response) {
+        questionType = 0;
+        emoWord = "";
+        imgPath = "";
+        wrongPath1 = "";
+        wrongPath2 = "";
+        wrongPath3 = "";
         if (response == answer) {
             answer = -1;
             return true;
@@ -84,6 +118,9 @@ public class Questioning {
         // output text
         //question("Which of these faces is not like the others?");
         // images on buttons: in outputs
+        questionType = 1;
+        imgPath = randImg(imgEmo);
+        wrongPath1 = randImg(wrong);
     }
 
     //T/F
@@ -105,6 +142,10 @@ public class Questioning {
         // output text
         //question("Is this person " + randEmo() + "?");
         //output image: imgEmo
+
+        questionType = 0;
+        emoWord = questionEmo;
+        imgPath = randImg(imgEmo);
     }
 
     //MC
@@ -138,6 +179,12 @@ public class Questioning {
         //question("What is this person feeling?");
         // output outputs
         //output image: imgEmo
+
+        questionType = 3;
+        imgPath = randImg(imgEmo);
+        wrongPath1 = wrong1;
+        wrongPath2 = wrong2;
+        wrongPath3 = wrong3;
     }
 
 
@@ -170,6 +217,13 @@ public class Questioning {
         // output text
         //question("Which of these people are feeling " + answerEmo + "?");
         // images on buttons: in outputs
+
+        questionType = 2;
+        emoWord = imgEmo;
+        imgPath = randImg(imgEmo);
+        wrongPath1 = randImg(wrong1);
+        wrongPath2 = randImg(wrong2);
+        wrongPath3 = randImg(wrong3);
     }
 
 }
