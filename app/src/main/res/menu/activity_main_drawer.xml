@@ -5,33 +5,44 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_camera"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="Import" />
-        <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="Gallery" />
-        <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="Slideshow" />
-        <item
-            android:id="@+id/nav_manage"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="Tools" />
+            android:id="@+id/nav_menu"
+            android:title="Menu" />
     </group>
 
-    <item android:title="Communicate">
+    <item android:title="Emotions To Learn">
         <menu>
             <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
-                android:title="Share" />
+                android:id="@+id/nav_happy"
+                android:icon="@drawable/happy"
+                android:title="Happy" />
             <item
-                android:id="@+id/nav_send"
-                android:icon="@drawable/ic_menu_send"
-                android:title="Send" />
+                android:id="@+id/nav_sad"
+                android:icon="@drawable/sad"
+                android:title="Sad" />
+            <item
+                android:id="@+id/nav_angry"
+                android:icon="@drawable/angry"
+                android:title="Angry" />
+            <item
+                android:id="@+id/nav_surprise"
+                android:icon="@drawable/surprise"
+                android:title="Surprise" />
+            <item
+                android:id="@+id/nav_fear"
+                android:icon="@drawable/fear"
+                android:title="Fear" />
+            <item
+                android:id="@+id/nav_disgust"
+                android:icon="@drawable/disgust"
+                android:title="Disgust" />
+            <item
+                android:id="@+id/nav_neutral"
+                android:icon="@drawable/neutral"
+                android:title="Neutral" />
+            <item
+                android:id="@+id/nav_all"
+                android:icon="@drawable/all"
+                android:title="All Emotions" />
         </menu>
     </item>
 
