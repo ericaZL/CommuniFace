@@ -24,6 +24,9 @@ public class Questioning {
     public Questioning(String type){
         this.emoType = type;
     }
+    public Questioning(){
+
+    }
 
     public static int getQuestionType(){
         return questionType;

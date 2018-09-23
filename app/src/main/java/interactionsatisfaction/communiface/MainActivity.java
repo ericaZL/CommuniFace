@@ -16,6 +16,7 @@ import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import java.util.*;
 
 import interactionsatisfaction.communiface.R;
 
@@ -26,6 +27,9 @@ public class MainActivity extends AppCompatActivity
 
     private String emotions = "";
     private int slideimage = 0;
+    private Questioning q = new Questioning();
+    private String emotionquestion;
+    private Random rnd = new Random();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -144,10 +148,9 @@ public class MainActivity extends AppCompatActivity
             ((TextView)findViewById(R.id.slide_emotion)).setText("These people are Neutral");
             ((ImageView) findViewById(R.id.slide_image)).setImageResource(SlideImages("N"));
         } else if (id == R.id.nav_all) {
-            //Lessons lesson = new Lessons("All");
             ContentClose();
             emotions = "All";
-            //*************Skip Slide Stuff*************************
+            GetQuestions();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -167,7 +170,34 @@ public class MainActivity extends AppCompatActivity
             }
         } else if (id == R.id.slide_continue) {
             ContentClose();
-            //get question type
+            GetQuestions();
+        }
+    }
+
+    public void OnClickTF(View view){
+        int id = view.getId();
+        boolean response = false;
+
+        if (id == R.id.tf_true) {
+            ContentClose();
+            ContentTFOpen2();
+            response = q.response(1);
+        }else if (id == R.id.tf_false) {
+            ContentClose();
+            ContentTFOpen2();
+            response = q.response(0);
+        }else if (id == R.id.tf_continue) {
+            ContentClose();
+            GetQuestions();
+            return;
+        }
+        if(response == true){
+            ((TextView)findViewById(R.id.tf_title)).setText("Correct");
+            ((TextView)findViewById(R.id.tf_emotion)).setText("This person was " + emotionquestion);
+        }
+        else {
+            ((TextView)findViewById(R.id.tf_title)).setText("Good Try!");
+            ((TextView)findViewById(R.id.tf_emotion)).setText("This person was " + emotionquestion);
         }
     }
 
@@ -190,9 +220,36 @@ public class MainActivity extends AppCompatActivity
         return (getResources().getIdentifier(mDrawableName.toLowerCase() , "drawable", getPackageName()));
     }
 
+    private void GetQuestions(){
+        int answer = rnd.nextInt(3);
+        if(answer >= 0){
+            ContentTFOpen1();
+            if(emotions != "All") {
+                q.trueOrFalse(emotions.toLowerCase());
+            }
+            else{
+                q.trueOrFalse();
+            }
+            ((TextView)findViewById(R.id.tf_title)).setText("Is this person...");
+            ((TextView)findViewById(R.id.tf_emotion)).setText(q.getEmoWord() + "?");
+            emotionquestion = q.getImgPath().substring(0, q.getImgPath().length() - 3);
+            ((ImageView)findViewById(R.id.tf_image)).setImageResource(getResources().getIdentifier(q.getImgPath().toLowerCase() , "drawable", getPackageName()));
+        }
+        else if(answer == 1){
+
+        }
+        else if(answer == 2){
+
+        }
+        else if(answer == 3){
+
+        }
+    }
+
     private void ContentClose(){
         ContentMainClose();
         ContentSlideClose();
+        ContentTFClose();
     }
 
     private void ContentMainClose(){
@@ -214,6 +271,7 @@ public class MainActivity extends AppCompatActivity
         findViewById(R.id.slide_btnr).setVisibility(View.GONE);
         findViewById(R.id.slide_image).setVisibility(View.GONE);
         findViewById(R.id.slide_continue).setVisibility(View.GONE);
+        findViewById(R.id.slide_emotion).setVisibility(View.GONE);
     }
 
     private void ContentSlideOpen(){
@@ -221,5 +279,30 @@ public class MainActivity extends AppCompatActivity
         findViewById(R.id.slide_btnr).setVisibility(View.VISIBLE);
         findViewById(R.id.slide_image).setVisibility(View.VISIBLE);
         findViewById(R.id.slide_continue).setVisibility(View.VISIBLE);
+        findViewById(R.id.slide_emotion).setVisibility(View.VISIBLE);
+    }
+
+    private void ContentTFClose(){
+        findViewById(R.id.tf_continue).setVisibility(View.GONE);
+        findViewById(R.id.tf_emotion).setVisibility(View.GONE);
+        findViewById(R.id.tf_false).setVisibility(View.GONE);
+        findViewById(R.id.tf_true).setVisibility(View.GONE);
+        findViewById(R.id.tf_image).setVisibility(View.GONE);
+        findViewById(R.id.tf_title).setVisibility(View.GONE);
+    }
+
+    private void ContentTFOpen1(){
+        findViewById(R.id.tf_emotion).setVisibility(View.VISIBLE);
+        findViewById(R.id.tf_false).setVisibility(View.VISIBLE);
+        findViewById(R.id.tf_true).setVisibility(View.VISIBLE);
+        findViewById(R.id.tf_image).setVisibility(View.VISIBLE);
+        findViewById(R.id.tf_title).setVisibility(View.VISIBLE);
+    }
+
+    private void ContentTFOpen2(){
+        findViewById(R.id.tf_continue).setVisibility(View.VISIBLE);
+        findViewById(R.id.tf_emotion).setVisibility(View.VISIBLE);
+        findViewById(R.id.tf_image).setVisibility(View.VISIBLE);
+        findViewById(R.id.tf_title).setVisibility(View.VISIBLE);
     }
 }
