@@ -12,11 +12,19 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import interactionsatisfaction.communiface.R;
 
 import interactionsatisfaction.communiface.R;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    private String emotions = "";
+    private int slideimage = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,15 +32,6 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -42,6 +41,8 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        ContentClose();
+        ContentMainOpen();
     }
 
     @Override
@@ -82,26 +83,124 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_happy) {
+        if (id == R.id.nav_menu) {
+            ContentClose();
+            ContentMainOpen();
+        } else if (id == R.id.nav_happy) {
             Lessons lesson = new Lessons("Happy");
+            ContentClose();
+            ContentSlideOpen();
+            emotions = "Happy";
+            slideimage = 0;
         } else if (id == R.id.nav_sad) {
             Lessons lesson = new Lessons("Sad");
+            ContentClose();
+            ContentSlideOpen();
+            emotions = "Sad";
+            slideimage = 0;
         } else if (id == R.id.nav_angry) {
             Lessons lesson = new Lessons("Angry");
+            ContentClose();
+            ContentSlideOpen();
+            emotions = "Angry";
+            slideimage = 0;
         } else if (id == R.id.nav_surprise) {
             Lessons lesson = new Lessons("Surprise");
+            ContentClose();
+            ContentSlideOpen();
+            emotions = "Surprise";
+            slideimage = 0;
         } else if (id == R.id.nav_fear) {
             Lessons lesson = new Lessons("Fear");
+            ContentClose();
+            ContentSlideOpen();
+            emotions = "Fear";
+            slideimage = 0;
         } else if (id == R.id.nav_disgust) {
             Lessons lesson = new Lessons("Disgust");
+            ContentClose();
+            ContentSlideOpen();
+            emotions = "Disgust";
+            slideimage = 0;
+            ((ImageView) findViewById(R.id.slide_image)).setImageResource(SlideImages("N"));
         } else if (id == R.id.nav_neutral) {
             Lessons lesson = new Lessons("Neutral");
+            ContentClose();
+            ContentSlideOpen();
+            emotions = "Neutral";
+            slideimage = 0;
         } else if (id == R.id.nav_all) {
-            Lessons lesson = new Lessons("All");
+            //Lessons lesson = new Lessons("All");
+            ContentClose();
+            emotions = "All";
+            //*************Skip Slide Stuff*************************
+        } else if (id == R.id.slide_btnl) {
+            if(SlideImages("L") != -1) {
+                ((ImageView) findViewById(R.id.slide_image)).setImageResource(SlideImages("L"));
+            }
+        } else if (id == R.id.slide_btnr) {
+            if(SlideImages("R") != -1) {
+                ((ImageView) findViewById(R.id.slide_image)).setImageResource(SlideImages("R"));
+            }
+        } else if (id == R.id.slide_continue) {
+            ContentClose();
+            //get question type
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    private int SlideImages(String direction){
+        if(direction == "L") {
+            if(slideimage != 0) {
+                slideimage--;
+            } else{
+                return -1;
+            }
+        }
+        else if(direction == "R"){
+            if(slideimage != 9) {
+                slideimage++;
+            } else{
+                return -1;
+            }
+        }
+        String mDrawableName = emotions + "/" + emotions + "00" + slideimage + ".jpg";
+        return (getResources().getIdentifier(mDrawableName , "drawable", getPackageName()));
+    }
+
+    private void ContentClose(){
+        ContentMainClose();
+        ContentSlideClose();
+    }
+
+    private void ContentMainClose(){
+        findViewById(R.id.main_title).setVisibility(View.GONE);
+        findViewById(R.id.main_options).setVisibility(View.GONE);
+        findViewById(R.id.main_divider1).setVisibility(View.GONE);
+        findViewById(R.id.main_divider2).setVisibility(View.GONE);
+    }
+
+    private void ContentMainOpen(){
+        findViewById(R.id.main_title).setVisibility(View.VISIBLE);
+        findViewById(R.id.main_options).setVisibility(View.VISIBLE);
+        findViewById(R.id.main_divider1).setVisibility(View.VISIBLE);
+        findViewById(R.id.main_divider2).setVisibility(View.VISIBLE);
+    }
+
+    private void ContentSlideClose(){
+        findViewById(R.id.slide_btnl).setVisibility(View.GONE);
+        findViewById(R.id.slide_btnr).setVisibility(View.GONE);
+        findViewById(R.id.slide_image).setVisibility(View.GONE);
+        findViewById(R.id.slide_continue).setVisibility(View.GONE);
+    }
+
+    private void ContentSlideOpen(){
+        findViewById(R.id.slide_btnl).setVisibility(View.VISIBLE);
+        findViewById(R.id.slide_btnr).setVisibility(View.VISIBLE);
+        findViewById(R.id.slide_image).setVisibility(View.VISIBLE);
+        findViewById(R.id.slide_continue).setVisibility(View.VISIBLE);
     }
 }
