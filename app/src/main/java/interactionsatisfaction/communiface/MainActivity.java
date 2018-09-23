@@ -91,6 +91,9 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.nav_menu) {
             ContentClose();
             ContentMainOpen();
+        } else if (id == R.id.nav_menu) {
+            ContentClose();
+            ContentPicOpen();
         } else if (id == R.id.nav_happy) {
             Lessons lesson = new Lessons("Happy");
             ContentClose();
@@ -201,6 +204,49 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
+    public void OnClickOdd(View view){
+        int id = view.getId();
+        boolean response = false;
+
+        if (id == R.id.odd_image1) {
+            ContentClose();
+            ContentOddOpen2();
+            response = q.response(0);
+        } else if (id == R.id.odd_image2) {
+            ContentClose();
+            ContentOddOpen2();
+            response = q.response(1);
+        } else if (id == R.id.odd_image3) {
+            ContentClose();
+            ContentOddOpen2();
+            response = q.response(2);
+        } else if (id == R.id.odd_image4) {
+            ContentClose();
+            ContentOddOpen2();
+            response = q.response(3);
+        } else if (id == R.id.odd_continue) {
+            ContentClose();
+            GetQuestions();
+            return;
+        }
+        if(response == true){
+            ((TextView)findViewById(R.id.odd_title)).setText("Correct");
+            ((TextView)findViewById(R.id.odd_emotion)).setText("The odd expression was " + emotionquestion);
+        }
+        else {
+            ((TextView)findViewById(R.id.odd_title)).setText("Good Try!");
+            ((TextView)findViewById(R.id.odd_emotion)).setText("The odd expression was " + emotionquestion);
+        }
+    }
+
+    public void OnClickPic(View view) {
+        int id = view.getId();
+
+        if (id == R.id.pic_continue) {
+            //take pic
+        }
+    }
+
     private int SlideImages(String direction){
         if(direction == "L") {
             if(slideimage != 0) {
@@ -221,8 +267,25 @@ public class MainActivity extends AppCompatActivity
     }
 
     private void GetQuestions(){
-        int answer = rnd.nextInt(3);
-        if(answer >= 0){
+        int answer = rnd.nextInt(2);
+        if(answer == 1 && emotions == "All"){
+            ContentOddOpen1();
+            if(emotions != "All") {
+                q.oddOneOut(emotions.toLowerCase());
+            }
+            else{
+                q.oddOneOut();
+            }
+            ((TextView)findViewById(R.id.odd_title)).setText("Which is not like the others?");
+            ((TextView)findViewById(R.id.odd_emotion)).setText("");
+            emotionquestion = q.getEmoWord().substring(0, q.getEmoWord().length() - 3);
+            ArrayList<String> al = new ArrayList<String>(Questioning.getArray());
+            ((ImageView)findViewById(R.id.odd_image1)).setImageResource(getResources().getIdentifier(al.get(0).toLowerCase() , "drawable", getPackageName()));
+            ((ImageView)findViewById(R.id.odd_image2)).setImageResource(getResources().getIdentifier(al.get(1).toLowerCase() , "drawable", getPackageName()));
+            ((ImageView)findViewById(R.id.odd_image3)).setImageResource(getResources().getIdentifier(al.get(2).toLowerCase() , "drawable", getPackageName()));
+            ((ImageView)findViewById(R.id.odd_image4)).setImageResource(getResources().getIdentifier(al.get(3).toLowerCase() , "drawable", getPackageName()));
+        }
+        else {
             ContentTFOpen1();
             if(emotions != "All") {
                 q.trueOrFalse(emotions.toLowerCase());
@@ -235,21 +298,14 @@ public class MainActivity extends AppCompatActivity
             emotionquestion = q.getImgPath().substring(0, q.getImgPath().length() - 3);
             ((ImageView)findViewById(R.id.tf_image)).setImageResource(getResources().getIdentifier(q.getImgPath().toLowerCase() , "drawable", getPackageName()));
         }
-        else if(answer == 1){
-
-        }
-        else if(answer == 2){
-
-        }
-        else if(answer == 3){
-
-        }
     }
 
     private void ContentClose(){
         ContentMainClose();
         ContentSlideClose();
         ContentTFClose();
+        ContentOddClose();
+        ContentPicClose();
     }
 
     private void ContentMainClose(){
@@ -304,5 +360,46 @@ public class MainActivity extends AppCompatActivity
         findViewById(R.id.tf_emotion).setVisibility(View.VISIBLE);
         findViewById(R.id.tf_image).setVisibility(View.VISIBLE);
         findViewById(R.id.tf_title).setVisibility(View.VISIBLE);
+    }
+
+    private void ContentOddClose(){
+        findViewById(R.id.odd_continue).setVisibility(View.GONE);
+        findViewById(R.id.odd_emotion).setVisibility(View.GONE);
+        findViewById(R.id.odd_image1).setVisibility(View.GONE);
+        findViewById(R.id.odd_image2).setVisibility(View.GONE);
+        findViewById(R.id.odd_image3).setVisibility(View.GONE);
+        findViewById(R.id.odd_image4).setVisibility(View.GONE);
+        findViewById(R.id.odd_title).setVisibility(View.GONE);
+    }
+
+    private void ContentOddOpen1(){
+        findViewById(R.id.odd_emotion).setVisibility(View.VISIBLE);
+        findViewById(R.id.odd_image1).setVisibility(View.VISIBLE);
+        findViewById(R.id.odd_image2).setVisibility(View.VISIBLE);
+        findViewById(R.id.odd_image3).setVisibility(View.VISIBLE);
+        findViewById(R.id.odd_image4).setVisibility(View.VISIBLE);
+        findViewById(R.id.odd_title).setVisibility(View.VISIBLE);
+    }
+
+    private void ContentOddOpen2(){
+        findViewById(R.id.odd_continue).setVisibility(View.VISIBLE);
+        findViewById(R.id.odd_emotion).setVisibility(View.VISIBLE);
+        findViewById(R.id.odd_image1).setVisibility(View.VISIBLE);
+        findViewById(R.id.odd_image2).setVisibility(View.VISIBLE);
+        findViewById(R.id.odd_image3).setVisibility(View.VISIBLE);
+        findViewById(R.id.odd_image4).setVisibility(View.VISIBLE);
+        findViewById(R.id.odd_title).setVisibility(View.VISIBLE);
+    }
+
+    private void ContentPicClose(){
+        findViewById(R.id.pic_continue).setVisibility(View.GONE);
+        findViewById(R.id.pic_emotion).setVisibility(View.GONE);
+        findViewById(R.id.pic_title).setVisibility(View.GONE);
+    }
+
+    private void ContentPicOpen(){
+        findViewById(R.id.pic_continue).setVisibility(View.VISIBLE);
+        findViewById(R.id.pic_emotion).setVisibility(View.VISIBLE);
+        findViewById(R.id.pic_title).setVisibility(View.VISIBLE);
     }
 }

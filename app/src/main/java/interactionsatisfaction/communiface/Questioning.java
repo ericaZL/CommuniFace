@@ -116,19 +116,32 @@ public class Questioning {
         String wrong = randEmo();
 
         answer = rnd.nextInt(4);
-        wrong = randImg(wrong);
         imgPath = randImg(imgEmo);
 
+        String wrong1, wrong2, wrong3;
+
+        do{
+            wrong1 = randEmo();
+        }while(wrong1.equals(imgEmo));
+
+        wrong1 = randImg(wrong);
+        do{
+            wrong2 = randImg(wrong);
+        }while(wrong2.equals(wrong1));
+        do{
+            wrong3 = randImg(wrong);
+        }while(wrong3.equals(wrong1)  && wrong2.equals(wrong3));
         
-        outputs.add(outputs.size(), wrong);
-        outputs.add(outputs.size(), wrong);
-        outputs.add(outputs.size(), wrong);
+        outputs.add(outputs.size(), wrong1);
+        outputs.add(outputs.size(), wrong2);
+        outputs.add(outputs.size(), wrong3);
         outputs.add(answer, imgPath);
 
         // output text
         //question("Which of these faces is not like the others?");
         // images on buttons: in outputs
         questionType = 1;
+        imgEmo = imgPath;
         emoWord = imgEmo;
         
         wrongPath1 = randImg(wrong);
