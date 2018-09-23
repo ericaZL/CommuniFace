@@ -93,6 +93,7 @@ public class MainActivity extends AppCompatActivity
             ContentSlideOpen();
             emotions = "Happy";
             slideimage = 0;
+            ((TextView)findViewById(R.id.slide_emotion)).setText("These people are Happy");
             ((ImageView) findViewById(R.id.slide_image)).setImageResource(SlideImages("N"));
         } else if (id == R.id.nav_sad) {
             Lessons lesson = new Lessons("Sad");
@@ -100,6 +101,7 @@ public class MainActivity extends AppCompatActivity
             ContentSlideOpen();
             emotions = "Sad";
             slideimage = 0;
+            ((TextView)findViewById(R.id.slide_emotion)).setText("These people are Sad");
             ((ImageView) findViewById(R.id.slide_image)).setImageResource(SlideImages("N"));
         } else if (id == R.id.nav_angry) {
             Lessons lesson = new Lessons("Angry");
@@ -107,6 +109,7 @@ public class MainActivity extends AppCompatActivity
             ContentSlideOpen();
             emotions = "Angry";
             slideimage = 0;
+            ((TextView)findViewById(R.id.slide_emotion)).setText("These people are Angry");
             ((ImageView) findViewById(R.id.slide_image)).setImageResource(SlideImages("N"));
         } else if (id == R.id.nav_surprise) {
             Lessons lesson = new Lessons("Surprise");
@@ -114,6 +117,7 @@ public class MainActivity extends AppCompatActivity
             ContentSlideOpen();
             emotions = "Surprise";
             slideimage = 0;
+            ((TextView)findViewById(R.id.slide_emotion)).setText("These people are Surprised");
             ((ImageView) findViewById(R.id.slide_image)).setImageResource(SlideImages("N"));
         } else if (id == R.id.nav_fear) {
             Lessons lesson = new Lessons("Fear");
@@ -121,6 +125,7 @@ public class MainActivity extends AppCompatActivity
             ContentSlideOpen();
             emotions = "Fear";
             slideimage = 0;
+            ((TextView)findViewById(R.id.slide_emotion)).setText("These people are Afraid");
             ((ImageView) findViewById(R.id.slide_image)).setImageResource(SlideImages("N"));
         } else if (id == R.id.nav_disgust) {
             Lessons lesson = new Lessons("Disgust");
@@ -128,6 +133,7 @@ public class MainActivity extends AppCompatActivity
             ContentSlideOpen();
             emotions = "Disgust";
             slideimage = 0;
+            ((TextView)findViewById(R.id.slide_emotion)).setText("These people are Disgusted");
             ((ImageView) findViewById(R.id.slide_image)).setImageResource(SlideImages("N"));
         } else if (id == R.id.nav_neutral) {
             Lessons lesson = new Lessons("Neutral");
@@ -135,6 +141,7 @@ public class MainActivity extends AppCompatActivity
             ContentSlideOpen();
             emotions = "Neutral";
             slideimage = 0;
+            ((TextView)findViewById(R.id.slide_emotion)).setText("These people are Neutral");
             ((ImageView) findViewById(R.id.slide_image)).setImageResource(SlideImages("N"));
         } else if (id == R.id.nav_all) {
             //Lessons lesson = new Lessons("All");
