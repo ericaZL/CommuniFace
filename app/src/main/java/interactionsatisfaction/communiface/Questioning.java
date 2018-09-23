@@ -76,7 +76,7 @@ public class Questioning {
 
     // get random Img from folder
     public static String randImg(String folderName) {
-        String path = folderName + "00" + Integer.toString(rnd.nextInt(FOLDER_CAP)) + ".jpg";
+        String path = folderName + "00" + Integer.toString(rnd.nextInt(FOLDER_CAP));
         return path;
     }
 
