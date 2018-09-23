@@ -75,7 +75,7 @@ public class Questioning {
     }
 
     // get random Img from folder
-    public String randImg(String folderName) {
+    public static String randImg(String folderName) {
         String path = folderName + "00" + Integer.toString(rnd.nextInt(FOLDER_CAP)) + ".jpg";
         return path;
     }
@@ -83,7 +83,7 @@ public class Questioning {
 
     //Response from front-end
     public static boolean response(int response) {
-        questionType = 0;
+        questionType = -1;
         emoWord = "";
         imgPath = "";
         wrongPath1 = "";
