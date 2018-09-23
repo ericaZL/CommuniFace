@@ -13,6 +13,7 @@ public class Questioning {
     private static String wrongPath1 = "";
     private static String wrongPath2 = "";
     private static String wrongPath3 = "";
+    private static ArrayList<String> outputs = new ArrayList<String>();
 
     public static final int FOLDER_CAP = 10;
 
@@ -45,6 +46,9 @@ public class Questioning {
     }
     public static String getWrongPath3(){
         return wrongPath3;
+    }
+    public static ArrayList<String> getArray(){
+        return outputs;
     }
 
     public static String randEmo() {
@@ -92,6 +96,7 @@ public class Questioning {
         wrongPath1 = "";
         wrongPath2 = "";
         wrongPath3 = "";
+        outputs.clear();
         if (response == answer) {
             answer = -1;
             return true;
@@ -111,18 +116,21 @@ public class Questioning {
         String wrong = randEmo();
 
         answer = rnd.nextInt(4);
+        wrong = randImg(wrong);
+        imgPath = randImg(imgEmo);
 
-        ArrayList<String> outputs = new ArrayList<String>();
+        
         outputs.add(outputs.size(), wrong);
         outputs.add(outputs.size(), wrong);
         outputs.add(outputs.size(), wrong);
-        outputs.add(answer, imgEmo);
+        outputs.add(answer, imgPath);
 
         // output text
         //question("Which of these faces is not like the others?");
         // images on buttons: in outputs
         questionType = 1;
-        imgPath = randImg(imgEmo);
+        emoWord = imgEmo;
+        
         wrongPath1 = randImg(wrong);
     }
 
